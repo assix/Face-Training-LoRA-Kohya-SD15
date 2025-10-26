@@ -1,0 +1,14 @@
+# Ignore image data subfolders
+images_512/
+
+# Ignore trained models
+model_512/
+
+# Ignore training logs
+log_512/
+
+# Ignore virtual environment files
+venv/
+
+# Ignore cached latent files
+*.npz
