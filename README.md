@@ -9,7 +9,7 @@ This project assumes the following directory structure, with all directories loc
 ~/
 ├── kohya_ss/            # Complete and installed kohya_ss repository
 │   └── venv/            # Python Virtual Environment
-├── FriendFace_Lora/     # THIS REPOSITORY (Project Root)
+├── Face-Training-LoRA-Kohya-SD15/     # THIS REPOSITORY (Project Root)
 │   ├── images_512/      # Parent directory for training data
 │   ├── model_512/       # Output folder for trained LoRA files
 │   └── log_512/         # Training logs and session data
@@ -37,7 +37,7 @@ The included script handles environment activation and launches the training pro
 
 Your image data must be placed inside the images_512/ directory in a subdirectory following a strict naming convention: <repeats>_<trigger_keyword>.
 
-Directory Path: ~/FriendFace_Lora/images_512/10_friendface_person/
+Directory Path: ~/Face-Training-LoRA-Kohya-SD15/images_512/10_friendface_person/
 
 Filename Element
 
@@ -57,11 +57,35 @@ friendface person
 
 The custom phrase used to activate your LoRA during generation.
 
-Files Required:
+Image Requirements (IMPORTANT)
 
-Images: All must be 512x512 pixels (.png is preferred).
+The images_512/ folder must contain 15-30 high-quality images of the target identity, cropped and resized correctly:
 
-Captions: Each image (.png) must have an accompanying text file (.txt) with the identical filename, containing a detailed description of the image without the trigger phrase (friendface person).
+Resolution: All images must be exactly 512x512 pixels.
+
+Variety: Images should feature different lighting, expressions, angles, and clothing. Avoid backgrounds that are too complex or repeated across many images.
+
+Captioning: Each image (.png) requires an accompanying text file (.txt) with the identical filename, containing a detailed description of the image without mentioning the trigger phrase (friendface person).
+
+Example File Naming:
+
+File Name
+
+Content Example
+
+Role
+
+friendface-image1.png
+
+(The 512x512 image file)
+
+Source Photo
+
+friendface-image1.txt
+
+a woman wearing a red sweater, sitting on a wooden bench, park background
+
+Image Description (No trigger word)
 
 2. Run Training
 
@@ -69,7 +93,7 @@ The script train_sd15_lora.sh is configured with all the required parameters.
 
 Grant Execution Permissions:
 
-cd ~/FriendFace_Lora
+cd ~/Face-Training-LoRA-Kohya-SD15
 chmod +x train_sd15_lora.sh
 
 
@@ -80,11 +104,11 @@ Execute the Training:
 
 ✨ Generation (Inference)
 
-Once training is complete, the generate_sd15.py script can be used to test your new LoRA model. It will load the model from ~/FriendFace_Lora/model_512/.
+Once training is complete, the generate_sd15.py script can be used to test your new LoRA model.
 
 Run the Generation Script:
 
-cd ~/FriendFace_Lora
+cd ~/Face-Training-LoRA-Kohya-SD15
 python generate_sd15.py
 
 
